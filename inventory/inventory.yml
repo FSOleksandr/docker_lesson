@@ -1,0 +1,41 @@
+all:
+  hosts:
+    web1:
+      ansible_host: 192.168.1.10
+      ansible_user: your_user
+      ansible_port: 22
+    web2:
+      ansible_host: 192.168.1.11
+      ansible_user: your_user
+      ansible_port: 22
+    web3:
+      ansible_host: 192.168.1.12
+      ansible_user: your_user
+      ansible_port: 22
+  children:
+    load_balancers:
+      hosts:
+        lb1:
+          ansible_host: 192.168.1.50
+        lb2:
+          ansible_host: 192.168.1.51
+# inventory.yml
+production:
+  children:
+    staging:
+      hosts:
+        stage1:
+          ansible_host: 192.168.1.30
+
+    datacenter1:
+      children:
+        webservers:
+          hosts:
+            web1:
+              ansible_host: 192.168.1.10
+            web2:
+              ansible_host: 192.168.1.11
+        dbservers:
+          hosts:
+            db1:
+              ansible_host: 192.168.1.20

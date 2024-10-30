@@ -1,0 +1,2 @@
+http_port: 80
+proxy_timeout: 5

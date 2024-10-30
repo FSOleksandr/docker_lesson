@@ -1,0 +1,2 @@
+ansible_user: "default_user"
+ansible_password: "default_password"
